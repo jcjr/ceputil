@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI; // Modificação: Linha inserida
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
@@ -28,8 +29,9 @@ public class ClienteViaCepWS {
         String json;
 
         try {
-            URL url = new URL("http://viacep.com.br/ws/"+ cep +"/json");
-            URLConnection urlConnection = url.openConnection();
+            URL url = new URI("http://viacep.com.br/ws/"+ cep +"/json").toURL(); // Modificado: Alterado o Comando URL(Deprecated) por URI e inserido toURL() no final.
+                                                                                 // Correção em: https://www.youtube.com/shorts/0f76rVS_HSY
+            URLConnection urlConnection = url.openConnection();                 
             InputStream is = urlConnection.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 

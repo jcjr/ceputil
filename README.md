@@ -29,8 +29,10 @@ public class ClienteViaCepWS {
         String json;
 
         try {
-            URL url = new URI("http://viacep.com.br/ws/"+ cep +"/json").toURL(); // Modificado: Alterado o Comando URL(Deprecated) por URI e inserido toURL() no final.
-                                                                                 // Correção em: https://www.youtube.com/shorts/0f76rVS_HSY
+            // Modificado: Alterado o a chamada da função de URL(Deprecated) por URI e inserido .toURL() no final.
+            // Correção em: https://www.youtube.com/shorts/0f76rVS_HSY
+            URL url = new URI("http://viacep.com.br/ws/"+ cep +"/json").toURL(); // << Modificado
+                                                                                 
             URLConnection urlConnection = url.openConnection();                 
             InputStream is = urlConnection.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
